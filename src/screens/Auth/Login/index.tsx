@@ -13,7 +13,6 @@ export default function Login() {
             <Image
                 alt="Black Panther"
                 source={require('@/assets/images/BlackPanther.png')}
-                // style={{ width: 250, height: 250 }}
                 position={'absolute'}
                 zIndex={-1}
                 top={0}

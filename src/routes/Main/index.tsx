@@ -7,15 +7,15 @@ const Stack = createNativeStackNavigator();
 export default function MainNavigator() {
     return (
         <Stack.Navigator
-            initialRouteName={Routes.Auth.HOME}
+            initialRouteName={Routes.Main.HOME}
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen name={Routes.Auth.HOME} component={Screens.HOME} />
+            <Stack.Screen name={Routes.Main.HOME} component={Screens.HOME} />
 
-            <Stack.Screen name={Routes.Auth.MOVIE_DETAILS} component={Screens.MOVIE_DETAILS} />
+            <Stack.Screen name={Routes.Main.MOVIE_DETAILS} component={Screens.MOVIE_DETAILS} />
 
-            <Stack.Screen name={Routes.Auth.MOVIE_SEARCH} component={Screens.SEARCH} />
+            <Stack.Screen name={Routes.Main.MOVIE_SEARCH} component={Screens.SEARCH} />
         </Stack.Navigator>
     );
 }

@@ -1,4 +1,4 @@
-import { Box, Input, useTheme, Text, Button, Spinner, Toast } from 'native-base';
+import { Box, Input, useTheme, Text, Button, Spinner, Toast, Pressable } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -252,7 +252,7 @@ export default function InputsSingIn({ show, setShow }: InputsSingInProps) {
             </Box>
 
             <TouchableOpacity
-                onPress={() => navigator.navigate(Routes.NoAuth.FORGOT_PASSWORD)}
+                onPress={() => navigator.navigate(Routes.Auth.FORGOT_PASSWORD)}
                 style={{ alignItems: 'center' }}>
                 <Box w={'314px'}>
                     <Text
@@ -304,6 +304,17 @@ export default function InputsSingIn({ show, setShow }: InputsSingInProps) {
             </Box>
 
             <SocialLogin />
+
+            <Pressable onPress={() => navigator.navigate(Routes.Auth.REGISTER)}>
+                <Text
+                    color={color.primary[600]}
+                    fontSize={11.33}
+                    fontWeight={'500'}
+                    lineHeight={16.99}
+                    mt={8}>
+                    Não possui uma conta?<Text color={'#BF2EB9'}> Cadastre-se</Text>
+                </Text>
+            </Pressable>
         </Box>
     );
 }

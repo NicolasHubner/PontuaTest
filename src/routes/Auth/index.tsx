@@ -7,18 +7,15 @@ const Stack = createNativeStackNavigator();
 export function AuthNavigator() {
     return (
         <Stack.Navigator
-            initialRouteName={Routes.NoAuth.LOGIN}
+            initialRouteName={Routes.Auth.LOGIN}
             screenOptions={{
                 headerShown: false,
             }}>
-            <Stack.Screen name={Routes.NoAuth.LOGIN} component={Screens.LOGIN} />
+            <Stack.Screen name={Routes.Auth.LOGIN} component={Screens.LOGIN} />
 
-            <Stack.Screen name={Routes.NoAuth.REGISTER} component={Screens.REGISTER} />
+            <Stack.Screen name={Routes.Auth.REGISTER} component={Screens.REGISTER} />
 
-            <Stack.Screen
-                name={Routes.NoAuth.FORGOT_PASSWORD}
-                component={Screens.FORGOT_PASSWORD}
-            />
+            <Stack.Screen name={Routes.Auth.FORGOT_PASSWORD} component={Screens.FORGOT_PASSWORD} />
         </Stack.Navigator>
     );
 }
