@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { LogBox } from 'react-native';
+import { LogBox, Platform } from 'react-native';
 import { NativeBaseProvider, View } from 'native-base';
 import { nativeBaseTheme } from '@/styles/theme';
 import { useCallback, useEffect, useState } from 'react';
@@ -49,7 +49,10 @@ export default function App() {
         <NativeBaseProvider theme={nativeBaseTheme}>
             <View onLayout={onLayoutRootView} flex={1} width={'100%'} maxWidth={800}>
                 <RoutesComponent />
-                <StatusBar style="auto" />
+                {Platform.select({
+                    android: <StatusBar hidden />,
+                    ios: <StatusBar style="dark" />,
+                })}
             </View>
         </NativeBaseProvider>
     );
