@@ -6,8 +6,6 @@ import { ImageBackground } from 'react-native';
 import { SocialLogin } from './InputsLogin/SocialLogin';
 
 export default function Login() {
-    const [show, setShow] = useState(false);
-
     return (
         <ScrollViewWrapper edges={['left', 'right']}>
             <Image
@@ -42,7 +40,7 @@ export default function Login() {
                     blurRadius={1.5}
                     style={{ transform: [{ rotate: '-1deg' }] }}
                 />
-                <InputsSingIn show={show} setShow={setShow} />
+                <InputsSingIn />
             </ImageBackground>
         </ScrollViewWrapper>
     );

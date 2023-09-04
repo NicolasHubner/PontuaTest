@@ -1,5 +1,8 @@
 interface IParams {
-    email: string;
+    email?: string;
+    screen?: string;
+    data?: any;
+    type?: string;
 }
 
 export interface INavigation {

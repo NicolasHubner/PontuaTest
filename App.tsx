@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import RoutesComponent from '@/routes/index';
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
 
 //Tentei utilizar a lib de linear-gradiente "react-native-linear-gradient", para fazer o gradient na aplicação, porém identifiquei que estava depreciada e optei pelo expo-linear-gradient
 
@@ -46,15 +48,17 @@ export default function App() {
     }
 
     return (
-        <NativeBaseProvider theme={nativeBaseTheme}>
-            <View onLayout={onLayoutRootView} flex={1} width={'100%'} maxWidth={800}>
-                <RoutesComponent />
-                {Platform.select({
-                    android: <StatusBar hidden />,
-                    ios: <StatusBar style="dark" />,
-                })}
-            </View>
-        </NativeBaseProvider>
+        <Provider store={store}>
+            <NativeBaseProvider theme={nativeBaseTheme}>
+                <View onLayout={onLayoutRootView} flex={1} width={'100%'} maxWidth={800}>
+                    <RoutesComponent />
+                    {Platform.select({
+                        android: <StatusBar hidden />,
+                        ios: <StatusBar style="dark" />,
+                    })}
+                </View>
+            </NativeBaseProvider>
+        </Provider>
     );
 }
 

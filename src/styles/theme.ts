@@ -19,13 +19,13 @@ export const nativeBaseTheme = extendTheme({
     fontConfig: {
         Gilroy: {
             100: {
-                normal: 'Gilroy-Light',
+                normal: 'Gilroy-Regular',
             },
             200: {
-                normal: 'Gilroy-Light',
+                normal: 'Gilroy-Regular',
             },
             300: {
-                normal: 'Gilroy-Light',
+                normal: 'Gilroy-Regular',
             },
             400: {
                 normal: 'Gilroy-Regular',

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Image } from 'native-base';
 import { ScrollViewWrapper } from '@/components/View';
+import InputsRegister from './InputsRegister';
+import { TitleRegister } from './TitleRegister';
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -24,18 +26,21 @@ export default function Register() {
     //     }
     // };
     return (
-        <ScrollViewWrapper edges={['left', 'right']}>
+        <ScrollViewWrapper justifyContent={'flex-start'} edges={['left', 'right']}>
             <Image
                 alt="Black Panther"
                 source={require('@/assets/images/BlackPanther.png')}
-                // style={{ width: 400, height: 600 }}
                 position={'absolute'}
                 zIndex={-1}
                 top={0}
                 right={0}
-                blurRadius={3}
+                blurRadius={4}
                 left={0}
             />
+
+            <TitleRegister />
+
+            <InputsRegister />
         </ScrollViewWrapper>
     );
 }

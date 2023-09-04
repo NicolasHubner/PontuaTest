@@ -13,7 +13,7 @@ export const SocialLogin = () => {
     };
     return (
         <>
-            <View w={'100%'} alignItems={'center'} flexDir={'row'} justifyContent={'center'}>
+            <View w={'100%'} alignItems={'center'} flexDir={'row'} justifyContent={'center'} mt={4}>
                 <LinearGradient
                     colors={['#d9d9d914', '#d9d9d987']}
                     style={{
