@@ -8,17 +8,20 @@ interface IBackGround {
 
 export default function BackGround({ uri, alt }: IBackGround) {
     return (
-        <LinearGradient
-            colors={['#c4c4c416', '#000000c0']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 0, y: 1 }}
-            style={{
-                position: 'absolute',
-                left: 0,
-                right: 0,
-                top: 0,
-                height: 812,
-            }}>
+        <>
+            <LinearGradient
+                colors={['#c4c4c416', '#000000c0']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 1 }}
+                style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    height: 812,
+                    zIndex: 0,
+                }}
+            />
             <Image
                 source={{ uri: uri }}
                 alt={alt}
@@ -29,6 +32,6 @@ export default function BackGround({ uri, alt }: IBackGround) {
                 top={0}
                 zIndex={-1}
             />
-        </LinearGradient>
+        </>
     );
 }

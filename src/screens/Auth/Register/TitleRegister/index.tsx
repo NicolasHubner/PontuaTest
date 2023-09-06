@@ -1,4 +1,5 @@
 import { Box, Text } from 'native-base';
+import { useWindowDimensions } from 'react-native';
 
 export const TitleRegister = () => {
     return (
@@ -6,8 +7,8 @@ export const TitleRegister = () => {
             color={'white'}
             fontSize={30.33}
             fontWeight={'bold'}
-            mb={12}
-            mt={12}
+            mb={'24px'}
+            mt={useWindowDimensions().height > 700 ? 16 : '16px'}
             letterSpacing={2}
             textAlign={'center'}>
             Faça seu registro

@@ -33,7 +33,7 @@ export default function Card({ id, title, name, item, uri, i }: CardProps) {
             justifyContent={'flex-end'}
             ml={i === 0 ? '0px' : '24px'}>
             <LinearGradient
-                colors={['rgba(0,0,0,0)', 'rgba(0, 0, 0, 0.73)']}
+                colors={['rgba(0,0,0,0)', '#000000be']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
                 style={{
@@ -43,21 +43,23 @@ export default function Card({ id, title, name, item, uri, i }: CardProps) {
                     width: '100%',
                     height: '100%',
                     borderRadius: 16,
-                }}>
-                <Image
-                    source={{
-                        uri: uri,
-                    }}
-                    alt={name}
-                    width={'100%'}
-                    height={'100%'}
-                    borderRadius={'16px'}
-                    position={'absolute'}
-                    top={0}
-                    left={0}
-                    zIndex={-1}
-                />
-            </LinearGradient>
+                    flex: 1,
+                    zIndex: 0,
+                }}
+            />
+            <Image
+                source={{
+                    uri: uri,
+                }}
+                alt={name}
+                width={'100%'}
+                height={'100%'}
+                borderRadius={'16px'}
+                position={'absolute'}
+                top={0}
+                left={0}
+                zIndex={-1}
+            />
             <Text
                 color={'#fff'}
                 fontSize={'18px'}

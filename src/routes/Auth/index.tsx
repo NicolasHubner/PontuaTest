@@ -4,6 +4,8 @@ import {
 } from '@react-navigation/native-stack';
 import { Routes } from '../routes';
 import * as Screens from '@/screens';
+import ArrowLeft from '@/assets/Svg/ArrowLeft.svg';
+import { TouchableOpacity } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +13,9 @@ const screenOptions: NativeStackNavigationOptions = {
     headerShown: false,
     orientation: 'portrait',
     animation: 'fade',
+    contentStyle: {
+        backgroundColor: '#000',
+    },
 };
 
 export function AuthNavigator() {

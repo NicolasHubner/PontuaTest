@@ -10,6 +10,7 @@ import { ComponentRegister } from '@/components/GradientsBox';
 import { InputsAuth } from '@/components/Inputs';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ButtonAuth } from '@/components/Buttons';
+import { useWindowDimensions } from 'react-native';
 
 type FormData = {
     name: string;
@@ -71,7 +72,11 @@ export default function InputsRegister() {
     };
 
     return (
-        <Box alignItems={'center'} w={'100%'}>
+        <Box
+            alignItems={'center'}
+            w={'100%'}
+            flexGrow={useWindowDimensions().height > 700 ? 0.5 : null}
+            justifyContent={useWindowDimensions().height > 700 ? 'center' : null}>
             <Box>
                 <TextInputs textInput={'Nome completo'} />
 
@@ -279,7 +284,7 @@ export default function InputsRegister() {
                     color={colors.primary[600]}
                     fontSize={11.33}
                     fontWeight={'500'}
-                    mt={4}
+                    mt={8}
                     lineHeight={16.99}>
                     Já possui uma conta?<Text color={'#BF2EB9'}> Login</Text>
                 </Text>

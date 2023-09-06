@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Character } from '@/types/Characters';
 import { ComicData } from '@/types/Comics';
 import { MarvelEvent } from '@/types/Events';
@@ -11,7 +11,7 @@ import { InfoTitle } from './components/InfoTitle';
 import Series from './components/Series';
 import Comics from './components/Comics';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
 
 type DataTypeMapping = {
     characters: Character;
