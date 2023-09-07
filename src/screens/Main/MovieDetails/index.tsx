@@ -5,7 +5,7 @@ import { MarvelEvent } from '@/types/Events';
 import { ComicSeries } from '@/types/Series';
 import { ScrollViewWrapper } from '@/components/View';
 import { isTypeMovieDetails } from '@/helpers/functions/isTypeMovieDetails';
-import HeaderMovieDetails from './components/Headers';
+import HeaderMovieDetails from '../../../components/Headers';
 import BackGround from './components/BackGround';
 import { InfoTitle } from './components/InfoTitle';
 import Series from './components/Series';

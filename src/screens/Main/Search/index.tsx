@@ -11,6 +11,7 @@ import { MarvelEvent } from '@/types/Events';
 import { ComicSeries } from '@/types/Series';
 import { useSelector } from 'react-redux';
 import { SearchInput } from './SearchInput';
+import HeaderPatterArrowLeft from '../../../components/Headers';
 
 enum SearchType {
     HEROES = 'Heróis',
@@ -87,7 +88,9 @@ export default function Search() {
     }, 500);
 
     return (
-        <PageWrapper justifyContent="flex-start" edges={['top', 'left', 'right']} paddingTop={56}>
+        <PageWrapper justifyContent="flex-start" edges={['left', 'right', 'top']} paddingTop={24}>
+            <HeaderPatterArrowLeft color={'#000'} />
+
             <SearchInput onChangeText={text => handleSearch(text)} />
 
             <View

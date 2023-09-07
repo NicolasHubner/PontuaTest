@@ -4,8 +4,6 @@ import {
 } from '@react-navigation/native-stack';
 import { Routes } from '../routes';
 import * as Screens from '@/screens';
-import ArrowLeft from '@/assets/Svg/ArrowLeft.svg';
-import { TouchableOpacity } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 

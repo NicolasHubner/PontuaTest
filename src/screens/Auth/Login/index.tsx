@@ -1,9 +1,7 @@
 import { ScrollViewWrapper } from '@/components/View';
-import { Box, Image } from 'native-base';
-import { useState } from 'react';
+import { Image } from 'native-base';
 import InputsSingIn from './InputsLogin/inputs';
 import { ImageBackground } from 'react-native';
-import { SocialLogin } from './InputsLogin/SocialLogin';
 
 export default function Login() {
     return (

@@ -7,6 +7,7 @@ import { Animated, TouchableOpacity, useWindowDimensions } from 'react-native';
 import ArrowLeft from '@/assets/Svg/ArrowLeft.svg';
 import { useNavigation } from '@react-navigation/native';
 import { INavigation } from '@/helpers/interfaces/INavigation';
+import { HeaderAbsoluteArrowLeft } from '@/components/Headers';
 
 enum StatusForgotPassword {
     INITIAL = 'initial',
@@ -52,43 +53,46 @@ export default function ForgotPassword() {
     }, []);
 
     return (
-        <ScrollViewWrapper justifyContent={'center'} edges={['left', 'right']}>
-            <Image
-                alt="Black Panther"
-                source={require('@/assets/images/BlackPanther.png')}
-                position={'absolute'}
-                zIndex={-1}
-                top={0}
-                right={0}
-                blurRadius={4}
-                left={0}
-            />
+        <>
+            <HeaderAbsoluteArrowLeft />
+            <ScrollViewWrapper justifyContent={'center'} edges={['left', 'right']}>
+                <Image
+                    alt="Black Panther"
+                    source={require('@/assets/images/BlackPanther.png')}
+                    position={'absolute'}
+                    zIndex={-1}
+                    top={0}
+                    right={0}
+                    blurRadius={4}
+                    left={0}
+                />
 
-            <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={{ position: 'absolute', top: 56, left: 24 }}>
-                <ArrowLeft width={24} height={24} color={'white'} />
-            </TouchableOpacity>
-            <TitleForgot />
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={{ position: 'absolute', top: 56, left: 24 }}>
+                    <ArrowLeft width={24} height={24} color={'white'} />
+                </TouchableOpacity>
+                <TitleForgot />
 
-            <View
-                flexGrow={0.6}
-                justifyContent={'center'}
-                marginBottom={useWindowDimensions().height > 700 ? 24 : null}>
-                <Animated.View style={[{ opacity: fadeAnim }]}>
-                    {status === StatusForgotPassword.INITIAL && (
-                        <InputForgotEmail setStatus={setStatus} />
-                    )}
+                <View
+                    flexGrow={0.6}
+                    justifyContent={'center'}
+                    marginBottom={useWindowDimensions().height > 700 ? 24 : null}>
+                    <Animated.View style={[{ opacity: fadeAnim }]}>
+                        {status === StatusForgotPassword.INITIAL && (
+                            <InputForgotEmail setStatus={setStatus} />
+                        )}
 
-                    {status === StatusForgotPassword.SEND_EMAIL && (
-                        <InputsCodeVerification setStatus={setStatus} />
-                    )}
+                        {status === StatusForgotPassword.SEND_EMAIL && (
+                            <InputsCodeVerification setStatus={setStatus} />
+                        )}
 
-                    {status === StatusForgotPassword.CODE_VERIFICADED && (
-                        <InputsCodeVerificaded setStatus={setStatus} />
-                    )}
-                </Animated.View>
-            </View>
-        </ScrollViewWrapper>
+                        {status === StatusForgotPassword.CODE_VERIFICADED && (
+                            <InputsCodeVerificaded setStatus={setStatus} />
+                        )}
+                    </Animated.View>
+                </View>
+            </ScrollViewWrapper>
+        </>
     );
 }

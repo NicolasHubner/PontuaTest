@@ -10,6 +10,7 @@ export const SearchInput = ({ onChangeText }: SearchInputProps) => (
         placeholder="Faça sua busca"
         pl={'6px'}
         mx={'10px'}
+        mt={'16px'}
         borderRadius={'14px'}
         fontWeight={600}
         onChangeText={onChangeText}

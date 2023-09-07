@@ -5,6 +5,7 @@ module.exports = {
     plugins: ['@typescript-eslint'],
     rules: {
         '@typescript-eslint/no-unused-vars': 'off',
+        'react/no-unstable-nested-components': 'off',
     },
     overrides: [
         {

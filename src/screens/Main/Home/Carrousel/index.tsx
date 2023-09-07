@@ -2,11 +2,7 @@ import { Character } from '@/types/Characters';
 import { ComicData } from '@/types/Comics';
 import { MarvelEvent } from '@/types/Events';
 import { ComicSeries } from '@/types/Series';
-import { View, Text, ScrollView, Image, Skeleton, Pressable, useTheme } from 'native-base';
-import { isTypeCarrousel } from './helpers';
-import { useNavigation } from '@react-navigation/native';
-import { INavigation } from '@/helpers/interfaces/INavigation';
-import { Routes } from '@/routes/routes';
+import { View, Text, Skeleton, useTheme, FlatList } from 'native-base';
 import Card from '@/components/Cards';
 import { isTypeMovieDetails } from '@/helpers/functions/isTypeMovieDetails';
 
@@ -43,28 +39,29 @@ export const Carrousel = ({ title, data }: CarrouselProps) => {
                 mb={'16px'}>
                 {title}
             </Text>
-
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <View flexDirection={'row'} flexWrap={'wrap'} width={'100%'}>
-                    {data.map((item: any, i: number) => (
-                        <Card
-                            key={item.id}
-                            id={item.id}
-                            title={hadleTitle()}
-                            name={
-                                isTypeMovieDetails({ item: item, condition: hadleTitle() })?.name ||
-                                ''
-                            }
-                            item={item}
-                            uri={
-                                isTypeMovieDetails({ item: item, condition: hadleTitle() })?.uri ||
-                                ''
-                            }
-                            i={i}
-                        />
-                    ))}
-                    {data.length === 0 &&
-                        Array.from({ length: 10 }).map((_, i) => (
+            <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={data as Character[] | ComicData[] | MarvelEvent[] | ComicSeries[]}
+                renderItem={({ item, index }) => (
+                    <Card
+                        key={item.id}
+                        id={item.id}
+                        title={hadleTitle()}
+                        name={
+                            isTypeMovieDetails({ item: item, condition: hadleTitle() })?.name || ''
+                        }
+                        item={item}
+                        uri={isTypeMovieDetails({ item: item, condition: hadleTitle() })?.uri || ''}
+                        i={index}
+                    />
+                )}
+                contentContainerStyle={{ paddingRight: 36 }}
+                keyExtractor={item => item.id.toString()}
+                ItemSeparatorComponent={() => <View width={'24px'} />}
+                ListEmptyComponent={() => (
+                    <View flexDirection={'row'} flexWrap={'wrap'} width={'100%'}>
+                        {Array.from({ length: 10 }).map((_, i) => (
                             <Skeleton
                                 speed={1.6}
                                 mb={'48px'}
@@ -76,8 +73,9 @@ export const Carrousel = ({ title, data }: CarrouselProps) => {
                                 mr={'24px'}
                             />
                         ))}
-                </View>
-            </ScrollView>
+                    </View>
+                )}
+            />
         </View>
     );
 };

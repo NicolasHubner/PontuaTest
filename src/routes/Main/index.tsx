@@ -39,9 +39,8 @@ export default function MainNavigator() {
                 options={{
                     ...screenOptions,
                     animation: 'slide_from_right',
-                    headerShown: true,
+                    headerShown: false,
                     headerTitle: '',
-                    headerTransparent: true,
                 }}
                 name={Routes.Main.MOVIE_SEARCH}
                 component={Screens.SEARCH}

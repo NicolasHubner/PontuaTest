@@ -1,13 +1,12 @@
-import { Box, Input, useTheme, Text, Button, Spinner, Toast, Pressable } from 'native-base';
+import { Box, useTheme, Text, Toast, Pressable } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigation } from '@react-navigation/native';
 import { INavigation } from '@/helpers/interfaces/INavigation';
-import { TextInput, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Routes } from '@/routes/routes';
 import { Title } from './Title';
-import { LinearGradient } from 'expo-linear-gradient';
 import { SocialLogin } from './SocialLogin';
 import { TextInputs } from '@/components/TextInputs';
 import { ComponentLogin } from '@/components/GradientsBox';
@@ -15,7 +14,8 @@ import { InputsAuth } from '@/components/Inputs';
 import { ButtonAuth } from '@/components/Buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_USER_INFO } from '@/store/reducers/profileSlice';
-import { UseFakeLogin } from '@/hooks/useLogin';
+import { UseFakeLogin } from '@/helpers/functions/LoginFunction';
+import { RequestApiFake } from '@/helpers/interfaces/RequestApi';
 
 type FormData = {
     email: string;
@@ -26,10 +26,6 @@ type FormData = {
 // Evitando reenderizações desnecessárias para aumentar perfomance do usuario
 
 const STORAGE_USER_KEY = '@GenteCultura/user';
-
-interface RequestApiFake {
-    token: string;
-}
 
 export default function InputsSingIn() {
     const [show, setShow] = useState(false);
@@ -197,7 +193,7 @@ export default function InputsSingIn() {
                 marginTop={4}
             />
 
-            <SocialLogin />
+            <SocialLogin setLoading={setLoading} loading={loading} />
 
             <Pressable onPress={() => navigator.navigate(Routes.Auth.REGISTER)}>
                 <Text
