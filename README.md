@@ -3,11 +3,10 @@
 Este projeto consiste em criar um aplicativo que consome os dados da API da marvel e são exibidos de acordo com o Figma enviado.
 
 ## Fotos
+
 <img src="https://github.com/NicolasHubner/PontuaTest/assets/96187399/74f648f6-e573-49f4-8f99-b7cec4a58bd9" width="240px" />
 
-
 <img src="https://github.com/NicolasHubner/PontuaTest/assets/96187399/eaecb7ae-2660-41d2-90d5-5092d5964730" width="240px" />
-
 
 <img src="https://github.com/NicolasHubner/PontuaTest/assets/96187399/c0119e5f-58bb-4ee1-88aa-37eda29fc18b" width="240px" />
 
@@ -66,6 +65,8 @@ Este projeto consiste em criar um aplicativo que consome os dados da API da marv
 -   Pensando em expandir internacionalmente a aplicação, seria interessante utilizar constantes para as strings e utilizar o i18n para traduzir as strings ou escrever na mão;
 
 -   Como estou utilizando EXPO caso fosse necessário fazer deploy, poderíamos fazer o EJECT do projeto e utilizar o Android Studio e XCode para fazer o deploy ou Expo vem atendido bastante as expectativas para deployar e caso fosse necessário arquivos nativos poderíamos utilizar o Expo Dev Client para fazer o deploy e manutenção do projeto;
+
+-   Além de trazer também um fluxo decente para navegação entre as páginas;
 
 ## Tecnologias
 
