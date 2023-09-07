@@ -11,6 +11,9 @@ import { InputsAuth } from '@/components/Inputs';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ButtonAuth } from '@/components/Buttons';
 import { useWindowDimensions } from 'react-native';
+import { WriteUserData } from '@/service/firebase/UserData';
+import { validateName } from './helpers/validate';
+import { Routes } from '@/routes/routes';
 
 type FormData = {
     name: string;
@@ -34,7 +37,7 @@ export default function InputsRegister() {
 
     const { colors } = useTheme();
 
-    const { control, handleSubmit } = useForm<FormData>({
+    const { control, handleSubmit, watch } = useForm<FormData>({
         defaultValues: {
             name: '',
             email: '',
@@ -46,20 +49,13 @@ export default function InputsRegister() {
     const onSubmit = async (data: FormData) => {
         try {
             setLoading(true);
+            await WriteUserData(data);
 
-            // const res = await UseLogin({
-            //     email: data.email,
-            //     password: data.password,
-            // });
-
-            // if (res) {
-            //     const { token } = res;
-
-            //     // Simulando um token JWT
-            //     AsyncStorage.setItem(STORAGE_USER_KEY, JSON.stringify(token));
-
-            //     navigator.navigate(Routes.Auth.HOME);
-            // }
+            Toast.show({
+                description: 'Usuário cadastrado com sucesso!',
+                placement: 'top',
+            });
+            navigator.navigate(Routes.Auth.LOGIN);
         } catch (error) {
             console.error(error);
             Toast.show({
@@ -84,17 +80,17 @@ export default function InputsRegister() {
                     <Controller
                         control={control}
                         rules={{
-                            required: 'Email é obrigatório',
-                            pattern: {
-                                value: /\S+@\S+\.\S+/,
-                                message: 'Email inválido',
+                            required: 'Nome é obrigatório',
+                            validate: (value: string) => {
+                                const valid = validateName(value);
+                                return valid || 'Nome inválido';
                             },
                         }}
                         render={({ field, fieldState }) => (
                             <>
                                 <ComponentRegister>
                                     <InputsAuth
-                                        keyboardType="email-address"
+                                        keyboardType="default"
                                         inputLeftElement={
                                             <Ionicons
                                                 name="person"
@@ -220,10 +216,9 @@ export default function InputsRegister() {
                     <Controller
                         control={control}
                         rules={{
-                            required: 'Senha é obrigatória',
-                            minLength: {
-                                value: 6,
-                                message: 'Senha deve ter no mínimo 6 caracteres',
+                            required: 'Confirmar senha é obrigatória',
+                            validate: (value: string) => {
+                                return value === watch('password') || 'As senhas não coincidem';
                             },
                         }}
                         render={({ field, fieldState }) => (

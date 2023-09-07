@@ -15,6 +15,7 @@ import { InputsAuth } from '@/components/Inputs';
 import { ButtonAuth } from '@/components/Buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_USER_INFO } from '@/store/reducers/profileSlice';
+import { UseFakeLogin } from '@/hooks/useLogin';
 
 type FormData = {
     email: string;
@@ -25,6 +26,10 @@ type FormData = {
 // Evitando reenderizações desnecessárias para aumentar perfomance do usuario
 
 const STORAGE_USER_KEY = '@GenteCultura/user';
+
+interface RequestApiFake {
+    token: string;
+}
 
 export default function InputsSingIn() {
     const [show, setShow] = useState(false);
@@ -47,19 +52,10 @@ export default function InputsSingIn() {
     const onSubmit = async (data: FormData) => {
         setLoading(true);
         try {
-            // const res = await UseLogin({
-            //     email: data.email,
-            //     password: data.password,
-            // });
-
-            // if (res) {
-            //     const { token } = res;
-
-            //     // Simulando um token JWT
-            //     AsyncStorage.setItem(STORAGE_USER_KEY, JSON.stringify(token));
+            const response = (await UseFakeLogin(data)) as RequestApiFake;
 
             setTimeout(() => {
-                dispatch(SET_USER_INFO({ isLogged: true }));
+                dispatch(SET_USER_INFO({ isLogged: true, token: response.token }));
                 dispatch(SET_USER_INFO({ name: 'Teste', email: data.email }));
                 navigator.navigate(Routes.Main.HOME, { screen: Routes.Main.HOME });
             }, 1000);
