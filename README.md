@@ -24,7 +24,7 @@ Este projeto consiste em criar um aplicativo que consome os dadso da API da marv
 -   Na troca de telas está sendo utilizado fade_in ou slide_right para dar uma melhor experiência ao usuário;
 -   Componentizei grande parte do código para facilitar uma "futura" manutenção;
 -   Utilzei Redux para fazer a comunicação entre os componentes;
--   Armazenei dados do usuário, token, e os dados da API da Marvel no Redux;
+-   Armazenei os dados do usuário, token, e os dados da API da Marvel no Redux;
 
 -   Utilizei React Navigation para fazer a navegação entre as telas;
 -   Busquei sempre colocar um feedback de uma ação, como Toast na parte de Auth;
