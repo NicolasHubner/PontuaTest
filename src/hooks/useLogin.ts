@@ -1,5 +1,3 @@
-import { DATABASE, FIREBASE_APP } from '@/service/firebase';
-import { collection, getFirestore, getDoc, doc } from 'firebase/firestore/lite';
 import JWT from 'expo-jwt';
 
 export const secretKey = 'SIMULANDO_SECRET_KEY';
@@ -9,12 +7,21 @@ interface LoginProps {
     password: string;
 }
 
-export async function UseLogin({ email, password }: LoginProps) {
-    try {
-        const querySnapshot = await getDoc(doc(collection(DATABASE, 'users'), email));
-
-        console.log(querySnapshot);
-    } catch (error) {
-        console.log(error);
-    }
+export async function UseFakeLogin({ email, password }: LoginProps) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (email.length > 3 && password.length > 3) {
+                const token = JWT.encode(
+                    {
+                        email,
+                        password,
+                    },
+                    secretKey
+                );
+                resolve({ token: token });
+            } else {
+                reject('Credenciais inválidas');
+            }
+        }, 1000); // Simula um atraso de 1 segundo, como uma resposta real do servidor
+    });
 }
