@@ -35,7 +35,7 @@ Este projeto consiste em criar um aplicativo que consome os dadso da API da marv
 -   Em ESQUECEU A SENHA utilizei de Animated.View para fazer a transição de ações;
 -   Para autenticação criei um LoginFunction.ts que simula o login com o criador de token;
 
--   CÓDIGO PARA FINS DE TESTE: 123456
+-   Código em _Redefinir Senha_ para fins de teste: 123456
 
 (3) Tela de Home
 
