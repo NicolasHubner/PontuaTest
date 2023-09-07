@@ -86,7 +86,7 @@ Este projeto consiste em criar um aplicativo que consome os dadso da API da marv
 -   Rode o projeto com o comando:
 
 ```
- `yarn start`
+ yarn start
 ```
 
 -   Posteriormente escolha qual dispositivo deseja rodar o projeto, se emulador ou dispositivo físico.
