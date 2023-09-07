@@ -1,16 +1,17 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Use } from 'react-native-svg';
 
 export interface UserRootState {
     isLogged?: boolean | undefined;
     name?: string | undefined;
     email?: string | undefined;
+    token?: string | undefined;
 }
 
 const initialState: UserRootState = {
     isLogged: false,
     name: '',
     email: '',
+    token: '',
 };
 
 const profileSlice = createSlice({

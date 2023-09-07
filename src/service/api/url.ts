@@ -2,6 +2,8 @@ const publicKey = '6c517ded538f380f56f38d557ba36b63';
 const privateKey = 'b3f627887265b2c023a84b7a971a864d60f004bd';
 import md5 from 'js-md5';
 
+// Api da Marvel precisa de um hash e por isso criei essa função
+
 function BaseToURl() {
     // Get the current timestamp
     const ts = new Date().getTime().toString();
