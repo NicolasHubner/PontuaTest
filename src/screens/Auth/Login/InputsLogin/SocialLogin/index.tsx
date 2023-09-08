@@ -8,6 +8,8 @@ import { View, Text, useTheme, Image, Pressable, Toast } from 'native-base';
 import { useDispatch } from 'react-redux';
 import { SET_USER_INFO } from '@/store/reducers/profileSlice';
 import { useState } from 'react';
+import { AppleAuthenticator } from '@/helpers/Auth/Apple';
+import { Platform } from 'react-native';
 
 export const SocialLogin = ({
     setLoading,
@@ -35,6 +37,45 @@ export const SocialLogin = ({
                 dispatch(SET_USER_INFO({ name: 'Teste', email: 'loginsocial@social.com' }));
                 navigator.navigate(Routes.Main.HOME, { screen: Routes.Main.HOME });
             }, 1000);
+        } catch (error) {
+            console.error(error);
+            Toast.show({
+                description: 'Erro ao logar, usuário ou senha inválidos.',
+                placement: 'top',
+            });
+        } finally {
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000);
+        }
+    };
+
+    const handleAppleLogin = async () => {
+        if (Platform.OS === 'android') {
+            Toast.show({
+                description: 'Login com Apple não disponível para Android.',
+                placement: 'top',
+            });
+            return;
+        }
+        setLoading(true);
+        try {
+            const credential = await AppleAuthenticator();
+            const response = (await UseFakeLogin({
+                email: credential.email || '',
+                password: credential.user,
+            })) as RequestApiFake;
+
+            dispatch(SET_USER_INFO({ isLogged: true, token: response.token }));
+            dispatch(
+                SET_USER_INFO({
+                    name:
+                        `${credential.fullName?.givenName} ${credential.fullName?.middleName}` ||
+                        '',
+                    email: credential.email || '',
+                })
+            );
+            navigator.navigate(Routes.Main.HOME, { screen: Routes.Main.HOME });
         } catch (error) {
             console.error(error);
             Toast.show({
@@ -111,7 +152,7 @@ export const SocialLogin = ({
                     </LinearGradient>
                 </Pressable>
 
-                <Pressable disabled={loading} onPress={() => handleLogin('Apple')}>
+                <Pressable disabled={loading} onPress={() => handleAppleLogin()}>
                     <LinearGradient
                         colors={['#ffffff38', '#21212134']}
                         start={[0, 0]}
