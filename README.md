@@ -58,6 +58,10 @@ Este projeto consiste em criar um aplicativo que consome os dados da API da marv
 -   Além disso, a parte de quadrinhos, somente foi utilizada para quando a página de detalhes não era sobre QUADRINHOS, como por exemplo, quando o usuário clica em um personagem, ele é redirecionado para a página de detalhes do personagem, e lá é exibido os quadrinhos que o personagem participou;
 -   Quando é selecionado um QUADRINHO na parte inferiro, a tela é scrolada para cima;
 
+(5) Login Social
+
+-   O Login Social está disponível apenas para IOs, até o momento, como está rodando na versão Expo, caso tiver um Iphone para testar é possível testar o login social;
+
 # O que pode ser melhorado
 
 -   Como aplicação é pequena e estamos "mockando" bastante coisa, puxei apenas 22 itens de cada lista e armazenei no Redux, em um caso de CNTP(Condições Normais de Temperatura e Pressão) eu puxaria todos os dados e teria que averiguar as melhores formas de armazenar esses dados;
@@ -67,6 +71,8 @@ Este projeto consiste em criar um aplicativo que consome os dados da API da marv
 -   Como estou utilizando EXPO caso fosse necessário fazer deploy, poderíamos fazer o EJECT do projeto e utilizar o Android Studio e XCode para fazer o deploy ou Expo vem atendido bastante as expectativas para deployar e caso fosse necessário arquivos nativos poderíamos utilizar o Expo Dev Client para fazer o deploy e manutenção do projeto;
 
 -   Além de trazer também um fluxo decente para navegação entre as páginas;
+
+-   Poderia implementar o login Social para Android, mas deveria ser buildado a aplicação nativa para Android.
 
 ## Tecnologias
 
